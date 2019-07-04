@@ -28,7 +28,7 @@ router.route('/add').post((request, response) => {
 
 // /:id is the object's id in database
 // this GET request will return the information of the given note matching the id from database
-router.route('/:id').get((response, request) => {
+router.route('/:id').get((request, response) => {
   Note.findById(request.params.id)
     .then(note => response.json(note))
     .catch(err => response.status(400).json('Error: ' + err));
