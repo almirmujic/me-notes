@@ -12,7 +12,7 @@ router.route('/').get((request, response) => {
 router.route('/add').post((request, response) => {
   const title = request.body.title;
   const body = request.body.body;
-  const date = request.body.date;
+  const date = Date.parse(request.body.date);
 
   const newNote = new Note({
     title,
@@ -25,3 +25,5 @@ router.route('/add').post((request, response) => {
     .then(() => response.json('Note added...'))
     .catch(err => response.status(400).json('Error: ' + err));
 });
+
+module.exports = router;
