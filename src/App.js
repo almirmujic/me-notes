@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 //components
 import Navbar from './components/Navbar';
 import Notes from './components/Notes';
-import EditNote from './components/EditNote';
 import CreateNote from './components/CreateNote';
+import EditNote from './components/EditNote';
 import CreateTitle from './components/CreateTitle';
 
 //styling
@@ -13,13 +13,13 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <React.Fragment>
       <Navbar />
       <Route path="/" exact component={Notes} />
-      <Route path="/edit/:id" exact component={EditNote} />
       <Route path="/create" exact component={CreateNote} />
+      <Route path="/edit/:id" exact component={EditNote} />
       <Route path="/title" exact component={CreateTitle} />
-    </Router>
+    </React.Fragment>
   );
 }
 
