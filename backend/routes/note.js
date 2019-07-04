@@ -26,4 +26,19 @@ router.route('/add').post((request, response) => {
     .catch(err => response.status(400).json('Error: ' + err));
 });
 
+// /:id is the object's id in database
+// this GET request will return the information of the given note matching the id from database
+router.route('/:id').get((response, request) => {
+  Note.findById(request.params.id)
+    .then(note => response.json(note))
+    .catch(err => response.status(400).json('Error: ' + err));
+});
+
+// Delete note based on id
+router.route('/:id').delete((request, response) => {
+  Note.findByIdAndDelete(request.params.id)
+    .then(() => response.json(request.params.id))
+    .catch(err => response.status(400).json('Error: ' + err));
+});
+
 module.exports = router;
