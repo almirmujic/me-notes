@@ -21,10 +21,10 @@ connection.once('open', () => {
 });
 
 const titleRouter = require('./routes/title');
-const noteRouter = require('./routes/users');
+const noteRouter = require('./routes/note');
 
-app.use('./title', titleRouter);
-app.use('./note', noteRouter);
+app.use('/title', titleRouter);
+app.use('/note', noteRouter);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
