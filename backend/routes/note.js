@@ -37,7 +37,7 @@ router.route('/:id').get((response, request) => {
 // Delete note based on id
 router.route('/:id').delete((request, response) => {
   Note.findByIdAndDelete(request.params.id)
-    .then(() => response.json(request.params.id))
+    .then(() => response.json('Note deleted...'))
     .catch(err => response.status(400).json('Error: ' + err));
 });
 
