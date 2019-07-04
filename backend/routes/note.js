@@ -41,4 +41,19 @@ router.route('/:id').delete((request, response) => {
     .catch(err => response.status(400).json('Error: ' + err));
 });
 
+router.route('/update/:id').post((request, response) => {
+  Note.findById(request.params.id)
+    .then(note => {
+      note.title = request.body.title;
+      note.body = request.body.body;
+      note.date = Date.parse(request.body.date);
+
+      note
+        .save()
+        .then(() => response.json('Note updated...'))
+        .catch(err => response.status(400).json('Error: ' + err));
+    })
+    .catch(err => response.status(400).json('Error: ' + err));
+});
+
 module.exports = router;
