@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 //components
 import Navbar from './components/Navbar';
@@ -15,10 +15,14 @@ function App() {
   return (
     <React.Fragment>
       <Navbar />
-      <Route path="/" exact component={Notes} />
-      <Route path="/create" exact component={CreateNote} />
-      <Route path="/edit/:id" exact component={EditNote} />
-      <Route path="/title" exact component={CreateTitle} />
+      <br />
+      <Switch>
+        <Route path="/" exact component={Notes} />
+        <Route path="/create" exact component={CreateNote} />
+        <Route path="/edit/:id" exact component={EditNote} />
+        <Route path="/title" exact component={CreateTitle} />
+        <Redirect to="/" />
+      </Switch>
     </React.Fragment>
   );
 }
