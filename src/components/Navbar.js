@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 function TabContainer(props) {
   return (
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Navbar() {
+function Navbar({ location }) {
   const classes = useStyles();
   const initialValue = () => Number(localStorage.getItem('value')) || 0;
   const [value, setValue] = useState(initialValue);
@@ -55,3 +56,5 @@ export default function Navbar() {
     </div>
   );
 }
+
+export default withRouter(Navbar);
