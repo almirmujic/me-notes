@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function CreateNote({ location, history }) {
+function CreateNote({ history }) {
   const classes = useStyles();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
