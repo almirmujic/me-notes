@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -27,18 +27,13 @@ const useStyles = makeStyles({
   }
 });
 
-function Navbar({ location }) {
+function Navbar({ history, location }) {
   const classes = useStyles();
-  const initialValue = () => Number(localStorage.getItem('value')) || 0;
-  const [value, setValue] = useState(initialValue);
 
-  useEffect(() => {
-    localStorage.setItem('value', value);
-  }, [value]);
-
-  function handleChange(event, newValue) {
-    setValue(newValue);
+  function handleChange(value) {
+    history.push(value);
   }
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -47,10 +42,24 @@ function Navbar({ location }) {
             Me-notes
           </Typography>
         </Toolbar>
-        <Tabs variant="fullWidth" value={value} onChange={handleChange}>
-          <Tab label="Notes" component={Link} to="/" />
-          <Tab label="Create Note" component={Link} to="/create" />
-          <Tab label="Create Title" component={Link} to="/title" />
+        <Tabs
+          variant="fullWidth"
+          value={history.location.pathname}
+          onChange={handleChange}
+        >
+          <Tab label="Notes" value="/" component={Link} to="/" />
+          <Tab
+            label="Create Note"
+            value="/create"
+            component={Link}
+            to="/create"
+          />
+          <Tab
+            label="Create Title"
+            value="/title"
+            component={Link}
+            to="/title"
+          />
         </Tabs>
       </AppBar>
     </div>
