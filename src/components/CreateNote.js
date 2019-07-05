@@ -79,7 +79,9 @@ function CreateNote({ history }) {
           margin="normal"
         />
         <DatePicker selected={date} onChange={e => setDate(e)} />
-        <button>Submit</button>
+        <Button type="submit" variant="outlined" className={classes.button}>
+          Submit
+        </Button>
       </form>
     </div>
   );
