@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
+import axios from 'axios';
+
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from 'react-datepicker';
@@ -49,6 +51,10 @@ function CreateNote({ history }) {
     };
 
     console.log(newNote);
+
+    axios
+      .post('http://localhost:5000/note/add', newNote)
+      .then(res => console.log(res.data));
 
     history.push('/');
   };
