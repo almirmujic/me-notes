@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -28,7 +28,12 @@ const useStyles = makeStyles({
 
 export default function Navbar() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const initialValue = () => Number(localStorage.getItem('value')) || 0;
+  const [value, setValue] = useState(initialValue);
+
+  useEffect(() => {
+    localStorage.setItem('value', value);
+  }, [value]);
 
   function handleChange(event, newValue) {
     setValue(newValue);
