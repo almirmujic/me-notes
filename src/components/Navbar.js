@@ -54,12 +54,6 @@ function Navbar({ history, location }) {
             component={Link}
             to="/create"
           />
-          <Tab
-            label="Create Title"
-            value="/title"
-            component={Link}
-            to="/title"
-          />
         </Tabs>
       </AppBar>
     </div>
