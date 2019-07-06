@@ -56,6 +56,10 @@ function CreateNote({ history }) {
       .post('http://localhost:5000/note/add', newNote)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
+
+    setTitle('');
+    setBody('');
+    setDate(new Date());
   };
 
   return (
