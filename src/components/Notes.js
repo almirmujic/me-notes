@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Note from './Note';
 
+// Material UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -41,43 +43,16 @@ function Notes() {
     setNotes({ notes: notes.filter(note => note._id !== id) });
   };
 
-  const displayData = notes.map((note, id) => (
-    <div
-      style={{
-        paddingBottom: '1rem',
-        border: '1px solid black',
-        borderRadius: '15px',
-        maxWidth: 'auto',
-        margin: '0 auto'
-      }}
+  console.log(notes);
+  const notelist = notes.map((currentNote, id) => (
+    <Note
       key={id}
-    >
-      <div style={{ padding: '10px' }}>
-        <p>Title: {note.title}</p>
-        <span>Note: {note.body}</span>
-        <p>Date: {note.date.substring(0, 10)}</p>
-        <div style={{ display: 'flex' }}>
-          <Link to={'/edit/' + note._id}>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-            >
-              Edit
-            </Button>
-          </Link>
-          <Link to={'/edit/' + note._id}>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-            >
-              Edit
-            </Button>
-          </Link>
-        </div>
-      </div>
-    </div>
+      title={currentNote.title}
+      body={currentNote.body}
+      date={currentNote.date.substring(0, 10)}
+      deleteNote={deleteNote}
+      id={currentNote._id}
+    />
   ));
 
   return (
@@ -85,7 +60,7 @@ function Notes() {
       <Typography variant="h5" align="center" className={classes.headerSpacing}>
         Notes
       </Typography>
-      {displayData}
+      {notelist}
     </div>
   );
 }
