@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Note({ title, body, date, deleteNote, id }) {
+export default function Note({ title, body, date, id }) {
   const classes = useStyles();
   return (
     <div>
@@ -34,14 +34,6 @@ export default function Note({ title, body, date, deleteNote, id }) {
               Edit
             </Button>
           </Link>
-          <Button
-            onClick={deleteNote(id)}
-            variant="outlined"
-            color="primary"
-            className={classes.button}
-          >
-            Delete
-          </Button>
         </div>
       </div>
     </div>

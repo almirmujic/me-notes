@@ -34,22 +34,12 @@ function Notes() {
     fetchNotes();
   }, []);
 
-  const deleteNote = id => {
-    axios
-      .delete('http://localhost:5000/note/' + id)
-      .then(res => console.log(res.data));
-
-    setNotes({ notes: notes.filter(note => note._id !== id) });
-  };
-
-  console.log(notes);
   const notelist = notes.map((currentNote, id) => (
     <Note
       key={id}
       title={currentNote.title}
       body={currentNote.body}
       date={currentNote.date.substring(0, 10)}
-      deleteNote={deleteNote}
       id={currentNote._id}
     />
   ));
