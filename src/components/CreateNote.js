@@ -54,7 +54,8 @@ function CreateNote({ history }) {
 
     axios
       .post('http://localhost:5000/note/add', newNote)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
 
     history.push('/');
   };
