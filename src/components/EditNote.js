@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
+//Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import DatePicker from 'react-datepicker';
 import Button from '@material-ui/core/Button';
-import 'react-datepicker/dist/react-datepicker.css';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
