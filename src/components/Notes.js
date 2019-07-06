@@ -13,5 +13,13 @@ export default function Notes() {
     fetchNotes();
   }, []);
 
+  const deleteNote = id => {
+    axios
+      .delete('http://localhost:5000/note/' + id)
+      .then(res => console.log(res.data));
+
+    setNotes(notes.filter(note => note._id !== id));
+  };
+
   return <div />;
 }
