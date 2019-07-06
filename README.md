@@ -1,3 +1,3 @@
 #Simple crud note app using mern stack and material ui
 
-still under construction - needs delete functionality
+still under production - needs delete functionality
