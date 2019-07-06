@@ -28,6 +28,7 @@ function Notes() {
 
   const classes = useStyles();
 
+  //GET request to pull notes from db and store data into notes state
   useEffect(() => {
     const fetchNotes = () => {
       axios.get('http://localhost:5000/note').then(res => setNotes(res.data));

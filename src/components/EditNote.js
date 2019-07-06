@@ -42,6 +42,7 @@ function EditNote({ history, match }) {
   const [body, setBody] = useState('');
   const [date, setDate] = useState(new Date());
 
+  //GET request to individual note setting the state of title, body, date of the response object
   useEffect(() => {
     axios
       .get('http://localhost:5000/note/' + match.params.id)
